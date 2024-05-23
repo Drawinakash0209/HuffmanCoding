@@ -25,8 +25,14 @@ class huffmancoding {
 
     
 
-        for(var c: charCountMap.entrySet()){
-            cq.add(new Node(c.getkey(), c.getvalue()));
+        // for(var c: charCountMap.entrySet()){
+        //     cq.add(new Node(c.getkey(), c.getvalue()));
+        // }
+
+        for (var c : charCountMap.entset()) {
+            if (c != null) { // null pointer exception check
+                cq.add(new Node(c.getkey(), c.getvalue()));
+            }
         }
 
 

@@ -143,4 +143,17 @@ public int size(){
         return entries;
     }
 
+    public Entry<K, V>[] entset(){
+        Entry<K, V> entries[] = new Entry[SIZE];
+        int count = 0;
+        for (int i = 0; i < SIZE; i++) {
+            Entry<K, V> entry = table[i];
+            while (entry != null) {
+                entries[count++] = entry;
+                entry = entry.next;
+            }
+        }
+        return entries;
+    }
+
 }
