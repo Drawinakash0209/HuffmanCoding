@@ -1,5 +1,5 @@
 import java.util.HashMap;
-import java.util.PriorityQueue;
+
 
 class huffmancoding {
     
@@ -11,25 +11,38 @@ class huffmancoding {
 
         System.out.println("Input String: " + inputString);
 
-        HashMap<Character, Integer> charCountMap = new HashMap<Character, Integer>();
+        //custom hashmap
+        MyHashMap<Character, Integer> charCountMap = new MyHashMap<Character, Integer>();
 
         for(char c : inputString.toCharArray()){
             charCountMap.put(c, charCountMap.getOrDefault(c, 0) + 1);
         }
 
-        System.out.println("Occurance if each character in the string is" + charCountMap + "/n" );
 
-        PriorityQueue<Node> q = new PriorityQueue<> ((a,b)->a.getFreq() - b.getFreq());
+
+        //Custom priority queue
+       customPriorityQueue cq = new customPriorityQueue();
+
+    
 
         for(var c: charCountMap.entrySet()){
-            q.add(new Node(c.getKey(), c.getValue()));
+            cq.add(new Node(c.getkey(), c.getvalue()));
         }
 
+
+        System.out.println("CQ PEEK: " + cq.peek().getFreq() + "\n");
+
+        charCountMap.display();
         customQueue q1 = new customQueue();
         customQueue q2 = new customQueue();
 
-        while (!q.isEmpty()) {
-            q1.enqueue(q.poll());
+        // while (!q.isEmpty()) {
+        //     q1.enqueue(q.poll());
+        // }
+
+        while (!cq.isEmpty()) {
+            q1.enqueue(cq.poll());
+            
         }
 
         while (q1.size() + q2.size() > 1) {
